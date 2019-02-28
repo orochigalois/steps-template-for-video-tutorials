@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        div.item {
+            display: flex;
+            color: white;
+            background: #2FB4AF;
+            align-items: center;
+            border-bottom: 1px solid white;
+        }
+
+        .number {
+            font-size: 100px;
+            flex: 20%;
+            font-weight: 500;
+            padding: 20px;
+        }
+
+        .content {
+            flex: 80%;
+            overflow: hidden;
+            word-wrap: break-word;
+            padding: 20px;
+            font-size: 50px;
+        }
+
+        .highlight {
+            background: #E56101 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="highlight item">
+            <div class="number">
+                Step1
+            </div>
+            <div class="content">
+
+                xxxxx<br>
+                xxxxx<br>
+                xxxxx<br>
+                
+            </div>
+        </div>
+        <div class="item">
+            <div class="number">
+                Step2
+            </div>
+            <div class="content">
+
+                    xxxxx<br>
+                xxxxx<br>
+                xxxxx<br>
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="number">
+                Step3
+            </div>
+            <div class="content">
+
+                    xxxxx<br>
+                    xxxxx<br>
+                    xxxxx<br>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        $('div.item').on("click", function () {
+            $('div.item').removeClass("highlight");
+            $(this).addClass("highlight");
+        });
+
+        $(document).keyup(function (e) {
+            var highlight = $('div.highlight');
+            if (e.keyCode == 40) {
+
+                if (!highlight.is(':last-child')) {
+                    highlight.removeClass('highlight').next().addClass('highlight');
+                }
+
+
+            } else if (e.keyCode === 38) {
+
+                if (!highlight.is(':first-child')) {
+                    highlight.removeClass('highlight').prev().addClass('highlight');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
